@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PhoneBookMVC.Models.Person>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+    <p>@Html.ActionLink("Add new", "Create")</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>PhoneNumber</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => person.Name)</td>
+                <td>@Html.DisplayFor(modelItem => person.Surname)</td>
+                <td>@Html.DisplayFor(modelItem => person.PhoneNumber)</td>
+                <td>@Html.DisplayFor(modelItem => person.Category.Name)</td>
+                <td>
+                    <button type="button">@Html.ActionLink("Details", "Show", new {id = person.Id})</button>
+                    <button type="button">@Html.ActionLink("Edit", "Edit", new { id = person.Id })</button>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>

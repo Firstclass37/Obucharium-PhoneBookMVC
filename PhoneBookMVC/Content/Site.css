@@ -1,0 +1,12 @@
+﻿body {
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid red;    
+}
+table th,td {
+    border: 2px solid red;
+    text-align: center;
+    padding: 5px;    
+} 

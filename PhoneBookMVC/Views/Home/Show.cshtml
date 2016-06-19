@@ -1,0 +1,54 @@
+﻿@model PhoneBookMVC.Models.Person
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+</head>
+<body>
+<div>
+    <h2>General information</h2>
+    <div>
+        @Html.DisplayFor(m => m.Category, @Model.Category)
+    </div>
+    <div>
+        @Html.DisplayFor(m => m.Name, @Model.Name)
+    </div>
+    <div>
+        @Html.DisplayFor(m => m.Surname, @Model.Surname)
+    </div>
+    <div>
+        @Html.DisplayFor(m => m.PhoneNumber, @Model.PhoneNumber)
+    </div>
+
+    <h2>Additional Information</h2>
+
+    <div>
+        <p>Last Name: @Model.Detail.LastName</p>
+    </div>
+    <div>
+        <p>Main Address: @Model.Detail.Address1</p>
+    </div>
+    <div>
+        <p>Additional Address: @Model.Detail.Address2</p>
+    </div>
+    <div>
+        <p>Birthday: @if (Model.Detail.BirthDateTime.HasValue)
+                     {
+                         Model.Detail.BirthDateTime.Value.ToShortDateString();
+                     }</p>
+    </div>
+    <div>
+        <p>Email: @Model.Detail.Email</p>
+    </div>
+
+
+   <p>@Html.ActionLink("Back", "Index", new { })</p>
+ </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@model PhoneBookMVC.Models.Person
+@{
+    Layout = null;
+    List<SelectListItem> items = new List<SelectListItem>();
+    PhoneBookMVC.Models.DbManager db = new PhoneBookMVC.Models.DbManager();
+    foreach (var item in db.Categories)
+    {
+        items.Add(new SelectListItem() { Text = item.Name, Value = item.Id.ToString() });
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <h2>General information</h2>
+            <hr />
+
+            @Html.LabelFor(model => model.Category, "Category")
+            <div>
+                @Html.DropDownListFor(m => m.CategoryId, items, "Chose category")
+            </div>
+
+                @Html.LabelFor(model => model.Name)
+                <div>
+                    @Html.EditorFor(model => model.Name)
+                </div>
+
+                @Html.LabelFor(model => model.Surname)
+                <div>
+                    @Html.EditorFor(model => model.Surname)
+                </div>
+
+                @Html.LabelFor(model => model.PhoneNumber)
+                <div>
+                    @Html.EditorFor(model => model.PhoneNumber)
+                </div>
+
+
+
+                <h2>Additional Information</h2>
+                @Html.LabelFor(model => model.Detail.LastName, "Last Name")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Detail.LastName)
+                </div>
+
+                @Html.LabelFor(model => model.Detail.Address1, "Main Address")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Detail.Address1)
+                </div>
+
+                @Html.LabelFor(model => model.Detail.Address2, "Additional Address")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Detail.Address2)
+                </div>
+
+                @Html.LabelFor(model => model.Detail.BirthDateTime, "Birth Date")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Detail.BirthDateTime)
+                </div>
+
+                @Html.LabelFor(model => model.Detail.Email, "Email")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Detail.Email)
+                </div>
+
+                <div>
+                    <input type="submit" value="Save" />
+                </div>
+    }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div>
+    @Html.ActionLink("Remove this person", "Remove", new {id = Model.Id})
+</div>
+
+
+</body>
+</html>
