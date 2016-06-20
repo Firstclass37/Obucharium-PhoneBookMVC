@@ -12,14 +12,17 @@ namespace PhoneBookMVC.Controllers
     {
         private DbManager manager = new DbManager();
         // GET: Home
-        public ActionResult Index(int id = 0)
+        public ActionResult Index()
         {
-            var people = manager.People;
-            if (id != 0 )
-            {
-                people = people.Where(p => p.CategoryId == id);
-            }
+            var people = manager.People;       
             return View(people);
+        }
+
+        public ActionResult ShowCategory(int id)
+        {
+
+            var people = manager.People.Where(p => p.CategoryId == id);
+            return View();
         }
 
         public ActionResult Show(int id)
