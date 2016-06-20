@@ -1,6 +1,6 @@
 ﻿@model PhoneBookMVC.Models.Person
 @{
-    Layout = null;
+    Layout = "~/Views/_LayoutPage.cshtml";
     List<SelectListItem> items = new List<SelectListItem>();
     PhoneBookMVC.Models.DbManager db = new PhoneBookMVC.Models.DbManager();
     foreach (var item in db.Categories)
@@ -9,20 +9,13 @@
     }
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<div>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <h2>General information</h2>
-            <hr />
+
 
             @Html.LabelFor(model => model.Category, "Category")
             <div>
@@ -80,10 +73,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-<div>
-    @Html.ActionLink("Remove this person", "Remove", new {id = Model.Id})
 </div>
-
-
-</body>
-</html>

@@ -10,3 +10,10 @@ table th,td {
     text-align: center;
     padding: 5px;    
 } 
+
+.menu-item {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+    margin: 10px;       
+}

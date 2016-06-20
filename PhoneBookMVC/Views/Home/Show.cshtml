@@ -1,16 +1,9 @@
 ﻿@model PhoneBookMVC.Models.Person
 @{
-    Layout = null;
+    Layout = "~/Views/_LayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Show</title>
-</head>
-<body>
 <div>
     <h2>General information</h2>
     <div>
@@ -50,5 +43,4 @@
 
    <p>@Html.ActionLink("Back", "Index", new { })</p>
  </div>
-</body>
-</html>
+

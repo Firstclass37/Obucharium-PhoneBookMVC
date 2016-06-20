@@ -23,6 +23,11 @@ namespace PhoneBookMVC.Models
             get { return db.Categories; }
         }
 
+        public Category GetCategory(int id)
+        {
+            return db.Categories.First(c => c.Id == id);
+        }
+
         public void SaveCategory(Category category)
         {
             if (category == null)
@@ -42,7 +47,16 @@ namespace PhoneBookMVC.Models
         }
         public void RemoveCategory(Category category)
         {
-            //todo add remove category
+            if (category != null)
+            {
+                var tempPersons = db.People.Where(p=>p.CategoryId == category.Id).ToList();
+                foreach (var p in tempPersons)
+                {
+                    RemovePerson(p);
+                }
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
         }
         public void RemoveCategory(int id)
         {

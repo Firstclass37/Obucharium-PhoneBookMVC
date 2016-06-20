@@ -2,7 +2,7 @@
 
 
 @{
-    Layout = null;
+    Layout =  "~/Views/_LayoutPage.cshtml";
 
     List<SelectListItem> items = new List<SelectListItem>();
     PhoneBookMVC.Models.DbManager db = new PhoneBookMVC.Models.DbManager();
@@ -12,20 +12,13 @@
     }
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create new person</title>
-</head>
+<div>
 <body>
     @using (Html.BeginForm()) 
     {
         @Html.AntiForgeryToken()
         
             <h2>General information</h2>
-            <hr />
 
                 @Html.LabelFor(model => model.Category, "Category")
                 <div>
@@ -83,5 +76,4 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+</div>

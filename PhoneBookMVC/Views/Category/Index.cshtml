@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PhoneBookMVC.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<h2>Categories</h2>
+@Html.ActionLink("Add new category","Create")
+<table>
+    <tr>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    @foreach (var cat in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => cat.Name)</td>
+            <td>
+                <button type="button">@Html.ActionLink("Edit", "Edit", new {id = cat.Id})</button>
+                <button type="button">@Html.ActionLink("Remove", "Remove", new { id = cat.Id })</button>
+            </td>
+        </tr>
+    }
+</table>
+
+
+

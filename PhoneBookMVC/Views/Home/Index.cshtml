@@ -1,20 +1,11 @@
 ﻿@model IEnumerable<PhoneBookMVC.Models.Person>
 
 @{
-    Layout = null;
+    Layout = "~/Views/_LayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div>
-    <p>@Html.ActionLink("Add new", "Create")</p>
+<div>    
     <table>
         <tr>
             <th>Name</th>
@@ -32,11 +23,10 @@
                 <td>@Html.DisplayFor(modelItem => person.Category.Name)</td>
                 <td>
                     <button type="button">@Html.ActionLink("Details", "Show", new {id = person.Id})</button>
-                    <button type="button">@Html.ActionLink("Edit", "Edit", new { id = person.Id })</button>
+                    <button type="button">@Html.ActionLink("Edit", "Edit", new {id = person.Id})</button>
+                    <button type="button">@Html.ActionLink("Remove", "Remove", new { id = person.Id })</button>
                 </td>
             </tr>
         }
     </table>
 </div>
-</body>
-</html>

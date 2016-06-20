@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+@{
+    
+    var categories = new PhoneBookMVC.Models.DbManager().Categories;
+}
+
+<html>
+<head>
+    <meta name="viewport" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+    <h1>@Html.ActionLink("Simple Phone Book", "Index", "Home")</h1>
+</div>
+    @Html.ActionLink("Add new person","Create","Home")
+    @Html.ActionLink("Manage category", "index", "Category")
+<div>
+    <div class="menu-item">
+        <ul>
+            <li>@Html.ActionLink("All", "Index", "Home")</li>
+            @foreach (PhoneBookMVC.Models.Category cat in categories)
+            {
+                <li>@Html.ActionLink(@cat.Name,"Index","Home", new {id = cat.Id})</li>
+            }
+        </ul>
+    </div>
+
+    <div class="menu-item">
+        @RenderBody()
+    </div>
+</div>
+
+</body>
+</html>

@@ -12,9 +12,13 @@ namespace PhoneBookMVC.Controllers
     {
         private DbManager manager = new DbManager();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int id = 0)
         {
-            var people = manager.People.ToList();
+            var people = manager.People;
+            if (id != 0 )
+            {
+                people = people.Where(p => p.CategoryId == id);
+            }
             return View(people);
         }
 
@@ -51,8 +55,6 @@ namespace PhoneBookMVC.Controllers
             manager.SavePerson(person);
             return RedirectToAction("Index");
         }
-
-
 
         public ActionResult Remove(int id)
         {
