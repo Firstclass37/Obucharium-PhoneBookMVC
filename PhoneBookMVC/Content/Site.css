@@ -1,6 +1,14 @@
 ﻿body {
 }
-
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: aqua;
+}
+ul {
+    list-style: none;
+}
 table {
     border-collapse: collapse;
     border: 2px solid red;    

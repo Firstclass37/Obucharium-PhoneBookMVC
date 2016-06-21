@@ -13,13 +13,15 @@ namespace PhoneBookMVC.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            var catedories = db.Categories;
+            @ViewBag.Title = "Catigories";
+            var catedories = db.Categories.ToList();
             return View(catedories);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            @ViewBag.Title = "Add new category";
             return View();
         }
 
@@ -48,6 +50,7 @@ namespace PhoneBookMVC.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            @ViewBag.Title = "Edit category";
             var category = db.GetCategory(id);
             return View(category);
         }

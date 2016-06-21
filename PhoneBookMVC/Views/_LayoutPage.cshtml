@@ -1,7 +1,10 @@
 ﻿<!DOCTYPE html>
 @{
-    
+
     var categories = new PhoneBookMVC.Models.DbManager().Categories;
+    var person = new PhoneBookMVC.Models.DbManager().People;
+    var catInfo = categories.Select(c => new {id = c.Id, Name = c.Name, Count = person.Count(p => p.CategoryId == c.Id)});
+
 }
 
 <html>
@@ -11,26 +14,26 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div>
-    <h1>@Html.ActionLink("Simple Phone Book", "Index", "Home")</h1>
-</div>
-    @Html.ActionLink("Add new person","Create","Home")
+    <div>
+        <h1>@Html.ActionLink("Simple Phone Book", "Index", "Home")</h1>
+    </div>
+    @Html.ActionLink("Add new person", "Create", "Home")
     @Html.ActionLink("Manage category", "index", "Category")
-<div>
-    <div class="menu-item">
-        <ul>
-            <li>@Html.ActionLink("All", "Index", "Home")</li>
-            @foreach (PhoneBookMVC.Models.Category cat in categories)
+    <div>
+        <div class="menu-item">
+            <ul>
+                <li>@Html.ActionLink("All", "Index", "Home")</li>
+                @foreach (var cat in catInfo)
             {
-                <li>@Html.ActionLink(@cat.Name,"Index","Home", new {id = cat.Id})</li>
-            }
-        </ul>
-    </div>
+                    <li><a href="/Home/ShowCategory/@cat.id">@cat.Name  (@cat.Count)</a></li>
+                }
+            </ul>
+        </div>
 
-    <div class="menu-item">
-        @RenderBody()
+        <div class="menu-item">
+            @RenderBody()
+        </div>
     </div>
-</div>
 
 </body>
 </html>

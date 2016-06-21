@@ -14,20 +14,22 @@ namespace PhoneBookMVC.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            @ViewBag.Title = "Home";
             var people = manager.People;       
             return View(people);
         }
 
         public ActionResult ShowCategory(int id)
-        {
-
+        {        
             var people = manager.People.Where(p => p.CategoryId == id);
-            return View();
+            var cat = manager.Categories.Where(c=>c.Id == id).First();
+            @ViewBag.Title = cat==null?"Empty category":cat.Name;
+            return View(people);
         }
 
         public ActionResult Show(int id)
         {
-
+            @ViewBag.Title = "Details";
             var person = manager.GetPerson(id);
             return View(person);
         }
@@ -35,6 +37,7 @@ namespace PhoneBookMVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            @ViewBag.Title = "Add new person";
             return View();
         }
 
@@ -48,6 +51,7 @@ namespace PhoneBookMVC.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            @ViewBag.Title = "Edit info";
             var person = manager.GetPerson(id);
             return View(person);
         }

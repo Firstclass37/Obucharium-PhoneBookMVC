@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<PhoneBookMVC.Models.Person>
-
 @{
     Layout = "~/Views/_LayoutPage.cshtml";
 }
 
-
-<div>    
+<div>
     <table>
         <tr>
             <th>Name</th>
@@ -23,10 +21,10 @@
                 <td>@Html.DisplayFor(modelItem => person.Category.Name)</td>
                 <td>
                     <a href="/Home/Show/@person.Id">
-                        <img src="/Content/view-details-xl.png" alt="D" width="15"/>
+                        <img src="/Content/view-details-xl.png" alt="D" width="15" />
                     </a>
                     <a href="/Home/Edit/@person.Id">
-                        <img src="/Content/UserEdit.png" alt="E" width="15"/>
+                        <img src="/Content/UserEdit.png" alt="E" width="15" />
                     </a>
                     <a href="/Home/Remove/@person.Id">
                         <img src="/Content/delete.png" alt="R" width="15" />
